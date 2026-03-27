@@ -22,4 +22,17 @@ app.use(urlencoded({
 app.use(express.static("public"))
 
 app.use(cookieParser());
+
+
+
+//routes import
+
+//since routes are exported as default, we can import them with any name.
+//  Here we are importing them as userRoutes
+import userRoutes from './routes/user.routes.js';
+
+
+//routes declaration
+app.use("/api/v1/users", userRoutes);
+
 export  {app};

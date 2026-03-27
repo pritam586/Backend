@@ -50,16 +50,14 @@ const userSchema = new Schema(
     , {timestamps: true});
 
 
-    userSchema.pre("save" , async function(next){
-         if(!this.isModified("password")){
-            return next();
-        }
 
-        // apply hashing algorithm to the password using bcrypt library and 
+     // apply hashing algorithm to the password using bcrypt library and 
         // store the hashed password in the database
-        this.password = await bcrypt.hash(this.password , 10);
-        next();
-    })
+    userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
+
+    this.password = await bcrypt.hash(this.password, 10);
+});
 
     // This method is use to comparing the password entered by the user during login 
     // with the hashed password stored in the database. 
