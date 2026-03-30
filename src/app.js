@@ -9,6 +9,7 @@ app.use(cors({
     credentials: true,
 }))
 //a request comes with JSON data, convert it into a JavaScript object and store it in req.body
+
 app.use(express.json({
     limit:"10kb"
 }));
